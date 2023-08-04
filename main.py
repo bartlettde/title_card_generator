@@ -49,7 +49,7 @@ def draw_line(event):
 
    # Draw the line in the given co-ordinates
    try:
-      line = canvas.create_line(x1,y1,x2,y2, fill="black", width=1)
+      line = canvas.create_line(x1,y1,x2,y2, fill=textColour, width=1)
       linesDrawn.append(line)
       linesCoord.append([x1, y1, x2, y2])
       click_num = 0
@@ -69,10 +69,10 @@ def visualiseLine(event):
    if click_num == 1:
       if oldLine == None:
          # This is the users first time clicking in the canvas
-         oldLine = canvas.create_line(x1, y1, currentx, currenty, fill="black", width=1)
+         oldLine = canvas.create_line(x1, y1, currentx, currenty, fill=textColour, width=1)
       else:
          canvas.delete(oldLine) # Remove the old line
-         oldLine = canvas.create_line(x1, y1, currentx, currenty, fill="black", width=1) # add the new line
+         oldLine = canvas.create_line(x1, y1, currentx, currenty, fill=textColour, width=1) # add the new line
 
    canvas.update()
 
@@ -111,7 +111,7 @@ def animate(event):
          numLines = 0 # Another indexing variable
          # Creating the random lines around the user drawn lines. 
          while numLines < 5:
-            canvas.create_line(l[0] + random.randint(-3, 3),l[1] + random.randint(-3, 3),l[2] + random.randint(-3, 3),l[3] + random.randint(-3, 3), fill="black", width=1)
+            canvas.create_line(l[0] + random.randint(-3, 3),l[1] + random.randint(-3, 3),l[2] + random.randint(-3, 3),l[3] + random.randint(-3, 3), fill=textColour, width=1)
             numLines += 1
 
       # Canvas must be updated here, otherwise the screen shot is taken before the lines are drawn
@@ -159,7 +159,7 @@ def createVideo():
 
 
 # Create a canvas widget
-canvas=Canvas(win, width=600, height=600, background="white")
+canvas=Canvas(win, width=600, height=600, background=backgroundColour)
 canvas.grid(row=0, column=0)
 
 # These call the functions defined above when specific events happen
